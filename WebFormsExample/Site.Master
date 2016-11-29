@@ -54,6 +54,12 @@
                         <li><a runat="server" href="~/">Home</a></li>
                         <li><a runat="server" href="~/About">About</a></li>
                         <li><a runat="server" href="~/Contact">Contact</a></li>
+                        <% if (Context.User.Identity.IsAuthenticated){ %>
+                        <li><a href="javascript:;" onclick="var f=document.createElement('form');f.method='POST';f.action='/logout';f.submit();">Logout</a></li>
+                        <li><a><%: Context.User.Identity.Name %></a></li>
+                        <% } else { %>
+                        <li><a href="/login">Login</a></li>
+                        <% } %>
                     </ul>
                 </div>
             </div>
